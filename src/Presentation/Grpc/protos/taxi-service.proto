@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package taxi.master;
+
+option csharp_namespace = "Dispatches.Grpc";
+
+service TaxiService {
+  rpc ValidateDriverActive(ValidateDriverRequest) returns (ValidateDriverResponse);
+}
+
+message ValidateDriverRequest {
+  int64 driver_id = 1;
+}
+
+message ValidateDriverResponse {
+  bool is_active = 1;
+}
