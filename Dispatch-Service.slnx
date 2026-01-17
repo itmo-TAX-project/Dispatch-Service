@@ -10,5 +10,4 @@
     <Project Path="src\Infrastructure\Infrastructure.csproj" Type="Classic C#" />
     <Project Path="src\Presentation\Presentation.csproj" Type="Classic C#" />
   </Folder>
-  <Folder Name="/tests/" />
 </Solution>
