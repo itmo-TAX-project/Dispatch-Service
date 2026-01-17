@@ -25,7 +25,7 @@ public class CreateDriverSnapshots : Migration
     {
         Execute.Sql(
             """
-            
+                DROP TABLE IF EXISTS driver_snapshots;
             """);
     }
 }

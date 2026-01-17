@@ -14,7 +14,11 @@ public class DispatchService : IDispatchService
     private readonly IDispatchProducer _producer;
     private readonly IValidateDriverService _validateDriverService;
 
-    public DispatchService(IDriverSnapshotRepository snapshotRopository, IDistanceCalculator distanceCalculator, IDispatchProducer producer, IValidateDriverService validateDriverService)
+    public DispatchService(
+        IDriverSnapshotRepository snapshotRopository,
+        IDistanceCalculator distanceCalculator,
+        IDispatchProducer producer,
+        IValidateDriverService validateDriverService)
     {
         _snapshotRopository = snapshotRopository;
         _distanceCalculator = distanceCalculator;

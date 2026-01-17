@@ -17,7 +17,7 @@ public class SnapshotDriverService : ISnapshotDriverService
 
     public async Task AddDriverSnapshotAsync(DriverSnapshotDto dto, CancellationToken cancellationToken)
     {
-        TransactionScope transaction = CreateTransactionScope();
+        using TransactionScope transaction = CreateTransactionScope();
 
         DriverSnapshotDto? isDriverSnapshotExists = await _driverSnapshotRepository.GetDriverSnapshotAsync(
             dto.DriverId,
@@ -31,12 +31,11 @@ public class SnapshotDriverService : ISnapshotDriverService
         await _driverSnapshotRepository.CreateDriverSnapshotAsync(dto, cancellationToken);
 
         transaction.Complete();
-        transaction.Dispose();
     }
 
     public async Task UpdateDriverSnapshotAsync(DriverSnapshotDto dto, CancellationToken cancellationToken)
     {
-        TransactionScope transaction = CreateTransactionScope();
+        using TransactionScope transaction = CreateTransactionScope();
 
         DriverSnapshotDto? isDriverSnapshotExists = await _driverSnapshotRepository.GetDriverSnapshotAsync(
             dto.DriverId,
@@ -50,12 +49,11 @@ public class SnapshotDriverService : ISnapshotDriverService
         await _driverSnapshotRepository.UpdateDriverSnapshotAsync(dto, cancellationToken);
 
         transaction.Complete();
-        transaction.Dispose();
     }
 
     public async Task SetCurrentVehicleSegmentAsync(long driverId, VehicleSegment segment, CancellationToken cancellationToken)
     {
-        TransactionScope transaction = CreateTransactionScope();
+        using TransactionScope transaction = CreateTransactionScope();
 
         DriverSnapshotDto? isDriverSnapshotExists = await _driverSnapshotRepository.GetDriverSnapshotAsync(
             driverId,
@@ -69,12 +67,11 @@ public class SnapshotDriverService : ISnapshotDriverService
         await _driverSnapshotRepository.SetCurrentVehicleSegmentAsync(driverId, segment, cancellationToken);
 
         transaction.Complete();
-        transaction.Dispose();
     }
 
     public async Task DeleteDriverSnapshotAsync(long driverId, CancellationToken cancellationToken)
     {
-        TransactionScope transaction = CreateTransactionScope();
+        using TransactionScope transaction = CreateTransactionScope();
 
         DriverSnapshotDto? isDriverSnapshotExists = await _driverSnapshotRepository.GetDriverSnapshotAsync(
             driverId,
@@ -88,7 +85,6 @@ public class SnapshotDriverService : ISnapshotDriverService
         await _driverSnapshotRepository.DeleteDriverSnapshotAsync(driverId, cancellationToken);
 
         transaction.Complete();
-        transaction.Dispose();
     }
 
     private static TransactionScope CreateTransactionScope()
